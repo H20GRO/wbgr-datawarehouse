@@ -77,6 +77,24 @@ class fact_sensordata_dag(Base):
     def __repr__(self) -> str:
         return f"{self.dsg_id}, {self.ddt_id},avg: {self.avg_meetwaarde}"
 
+class fact_sensordata_dag_val(Base):
+    """Validatd day aggregates from DWH, only if they are calculated"""
+    __tablename__ = "fact_sensordata_dag_val"
+    dsg_id = sqlalchemy.Column(sqlalchemy.INTEGER, primary_key=True)
+    ddt_id = sqlalchemy.Column(sqlalchemy.DATETIME, primary_key=True)
+    eerste_meetwaarde = sqlalchemy.Column(sqlalchemy.FLOAT)
+    laatste_meetwaarde = sqlalchemy.Column(sqlalchemy.FLOAT)
+    avg_meetwaarde = sqlalchemy.Column(sqlalchemy.FLOAT)
+    min_meetwaarde = sqlalchemy.Column(sqlalchemy.FLOAT)
+    max_meetwaarde = sqlalchemy.Column(sqlalchemy.FLOAT)
+    delta_meetwaarde_periode = sqlalchemy.Column(sqlalchemy.FLOAT)
+    sum_meetwaarde = sqlalchemy.Column(sqlalchemy.FLOAT)
+    aantal_metingen = sqlalchemy.Column(sqlalchemy.INTEGER)
+    dwh_insert_date = sqlalchemy.Column(sqlalchemy.DATETIME)
+    aangepast = sqlalchemy.Column(sqlalchemy.INTEGER)
+    def __repr__(self) -> str:
+        return f"{self.dsg_id}, {self.ddt_id},avg: {self.avg_meetwaarde}"
+
 class fact_sensordata_uur(Base):
     """Hour aggregates from DWH, only if they are calculated"""
     __tablename__ = "fact_sensordata_uur"
@@ -92,5 +110,24 @@ class fact_sensordata_uur(Base):
     sum_meetwaarde = sqlalchemy.Column(sqlalchemy.FLOAT)
     aantal_metingen = sqlalchemy.Column(sqlalchemy.INTEGER)
     dwh_insert_date = sqlalchemy.Column(sqlalchemy.DATETIME)
+    def __repr__(self) -> str:
+        return f"{self.dsg_id}, {self.ddt_id}, avg: {self.avg_meetwaarde}"
+        
+class fact_sensordata_uur_val(Base):
+    """Validated hour aggregates from DWH, only if they are calculated"""
+    __tablename__ = "fact_sensordata_uur_val"
+    dsg_id = sqlalchemy.Column(sqlalchemy.INTEGER,primary_key=True)
+    ddt_id = sqlalchemy.Column(sqlalchemy.DATETIME,primary_key=True)
+    periode = sqlalchemy.Column(sqlalchemy.DATETIME,primary_key=True)    
+    eerste_meetwaarde = sqlalchemy.Column(sqlalchemy.FLOAT)
+    laatste_meetwaarde = sqlalchemy.Column(sqlalchemy.FLOAT)
+    avg_meetwaarde = sqlalchemy.Column(sqlalchemy.FLOAT)
+    min_meetwaarde = sqlalchemy.Column(sqlalchemy.FLOAT)
+    max_meetwaarde = sqlalchemy.Column(sqlalchemy.FLOAT)
+    delta_meetwaarde_periode = sqlalchemy.Column(sqlalchemy.FLOAT)
+    sum_meetwaarde = sqlalchemy.Column(sqlalchemy.FLOAT)
+    aantal_metingen = sqlalchemy.Column(sqlalchemy.INTEGER)
+    dwh_insert_date = sqlalchemy.Column(sqlalchemy.DATETIME)
+    aangepast = sqlalchemy.Column(sqlalchemy.INTEGER)
     def __repr__(self) -> str:
         return f"{self.dsg_id}, {self.ddt_id}, avg: {self.avg_meetwaarde}"
