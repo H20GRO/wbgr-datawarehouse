@@ -12,6 +12,6 @@ setup(
    url='-',
    license='-',
    description='Connection to wbgr datawarehouse',
-   long_description='',
+   long_description='LD',
    install_requires=required,
 )
