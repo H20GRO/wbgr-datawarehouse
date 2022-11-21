@@ -6,7 +6,7 @@ setup(
    name='wbgr_datawarehouse',
    version='0.0.2',
    author='Johan Nienhuis',
-   author_email='-',
+   author_email='j.nienhuis@wbgr.nl',
    packages=['wbgr_datawarehouse'],
    #scripts=['bin/script1','bin/script2'],
    url='-',
